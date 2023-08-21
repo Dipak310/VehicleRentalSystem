@@ -18,15 +18,17 @@ public class Customer {
     private String phoneNumber;
     private LocalDate dateOfBirth;
     private String licenseNumber;
-    private String membershipStatus;
+    private String username;
+    private String password;
+    private boolean loggedIn;
     
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Booking> bookings;
     
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Address> addresses;
     
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Feedback> feedbacks;
 
 	public Customer() {
@@ -35,8 +37,8 @@ public class Customer {
 	}
 
 	public Customer(Long customerId, String firstName, String lastName, String email, String phoneNumber,
-			LocalDate dateOfBirth, String licenseNumber, String membershipStatus, List<Booking> bookings,
-			List<Address> addresses, List<Feedback> feedbacks) {
+			LocalDate dateOfBirth, String licenseNumber, String username, String password, boolean loggedIn,
+			List<Booking> bookings, List<Address> addresses, List<Feedback> feedbacks) {
 		super();
 		this.customerId = customerId;
 		this.firstName = firstName;
@@ -45,11 +47,15 @@ public class Customer {
 		this.phoneNumber = phoneNumber;
 		this.dateOfBirth = dateOfBirth;
 		this.licenseNumber = licenseNumber;
-		this.membershipStatus = membershipStatus;
+		this.username = username;
+		this.password = password;
+		this.loggedIn = loggedIn;
 		this.bookings = bookings;
 		this.addresses = addresses;
 		this.feedbacks = feedbacks;
 	}
+
+
 
 	public Long getCustomerId() {
 		return customerId;
@@ -107,14 +113,6 @@ public class Customer {
 		this.licenseNumber = licenseNumber;
 	}
 
-	public String getMembershipStatus() {
-		return membershipStatus;
-	}
-
-	public void setMembershipStatus(String membershipStatus) {
-		this.membershipStatus = membershipStatus;
-	}
-
 	public List<Booking> getBookings() {
 		return bookings;
 	}
@@ -138,6 +136,30 @@ public class Customer {
 	public void setFeedbacks(List<Feedback> feedbacks) {
 		this.feedbacks = feedbacks;
 	}
+	
+	public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isLoggedIn() {
+        return loggedIn;
+    }
+
+    public void setLoggedIn(boolean loggedIn) {
+        this.loggedIn = loggedIn;
+    }
     
 }
 

@@ -14,4 +14,8 @@ public interface BookingService {
     Booking updateBooking(Long id, Booking booking);
 
     void deleteBooking(Long id);
+    
+    int calculateRentalDays(Booking booking);
+    
+    double calculateTotalAmount(Booking booking);
 }

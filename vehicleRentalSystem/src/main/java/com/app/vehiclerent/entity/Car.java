@@ -13,10 +13,7 @@ public class Car {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long carId;
 
-	private String make;
 	private String model;
-	private int year;
-	private String color;
 	private String licensePlate;
 	private double mileage;
 	private String fuelType;
@@ -26,11 +23,8 @@ public class Car {
 	private boolean available;
 	private LocalDate lastMaintenanceDate;
 
-	@OneToMany(mappedBy = "car")
+	@OneToMany(mappedBy = "car", cascade = CascadeType.ALL)
 	private List<Booking> bookings;
-
-	@OneToMany(mappedBy = "car")
-	private List<CarFeature> features;
 
 	public Car() {
 		super();
@@ -39,13 +33,10 @@ public class Car {
 
 	public Car(Long carId, String make, String model, int year, String color, String licensePlate, double mileage,
 			String fuelType, String transmissionType, int seatingCapacity, double dailyRentalRate, boolean available,
-			LocalDate lastMaintenanceDate, List<Booking> bookings, List<CarFeature> features) {
+			LocalDate lastMaintenanceDate, List<Booking> bookings) {
 		super();
 		this.carId = carId;
-		this.make = make;
 		this.model = model;
-		this.year = year;
-		this.color = color;
 		this.licensePlate = licensePlate;
 		this.mileage = mileage;
 		this.fuelType = fuelType;
@@ -55,7 +46,6 @@ public class Car {
 		this.available = available;
 		this.lastMaintenanceDate = lastMaintenanceDate;
 		this.bookings = bookings;
-		this.features = features;
 	}
 
 	public Long getCarId() {
@@ -66,36 +56,12 @@ public class Car {
 		this.carId = carId;
 	}
 
-	public String getMake() {
-		return make;
-	}
-
-	public void setMake(String make) {
-		this.make = make;
-	}
-
 	public String getModel() {
 		return model;
 	}
 
 	public void setModel(String model) {
 		this.model = model;
-	}
-
-	public int getYear() {
-		return year;
-	}
-
-	public void setYear(int year) {
-		this.year = year;
-	}
-
-	public String getColor() {
-		return color;
-	}
-
-	public void setColor(String color) {
-		this.color = color;
 	}
 
 	public String getLicensePlate() {
@@ -170,21 +136,12 @@ public class Car {
 		this.bookings = bookings;
 	}
 
-	public List<CarFeature> getFeatures() {
-		return features;
-	}
-
-	public void setFeatures(List<CarFeature> features) {
-		this.features = features;
-	}
-
 	@Override
 	public String toString() {
-		return "Car [carId=" + carId + ", make=" + make + ", model=" + model + ", year=" + year + ", color=" + color
-				+ ", licensePlate=" + licensePlate + ", mileage=" + mileage + ", fuelType=" + fuelType
-				+ ", transmissionType=" + transmissionType + ", seatingCapacity=" + seatingCapacity
-				+ ", dailyRentalRate=" + dailyRentalRate + ", available=" + available + ", lastMaintenanceDate="
-				+ lastMaintenanceDate + ", bookings=" + bookings + ", features=" + features + "]";
+		return "Car [carId=" + carId + ", model=" + model + ", licensePlate=" + licensePlate + ", mileage=" + mileage
+				+ ", fuelType=" + fuelType + ", transmissionType=" + transmissionType + ", seatingCapacity="
+				+ seatingCapacity + ", dailyRentalRate=" + dailyRentalRate + ", available=" + available
+				+ ", lastMaintenanceDate=" + lastMaintenanceDate + ", bookings=" + bookings + "]";
 	}
 
 }

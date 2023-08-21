@@ -8,36 +8,36 @@ import jakarta.persistence.*;
 @Entity
 @Table
 public class Booking {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long bookingId;
-    
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
-    
-    @ManyToOne
-    @JoinColumn(name = "car_id")
-    private Car car;
-    
-    private LocalDateTime pickupDate;
-    private LocalDateTime returnDate;
-    private double totalAmount;
-    private String status;
-    
-    @OneToMany(mappedBy = "booking")
-    private List<Payment> payments;
-    
-    @OneToMany(mappedBy = "booking")
-    private List<Invoice> invoices;
-    
-    public Booking() {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long bookingId;
+
+	@ManyToOne
+	@JoinColumn(name = "customer_id")
+	private Customer customer;
+
+	@ManyToOne
+	@JoinColumn(name = "car_id")
+	private Car car;
+
+	private LocalDateTime pickupDate;
+	private LocalDateTime returnDate;
+	private double totalAmount;
+	private String status;
+
+	@OneToMany(mappedBy = "booking", cascade = CascadeType.ALL)
+	private List<Payment> payments;
+
+	@OneToMany(mappedBy = "booking", cascade = CascadeType.ALL)
+	private List<Invoice> invoices;
+
+	public Booking() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	@OneToOne(mappedBy = "booking")
-    private Feedback feedback;
+	@OneToOne(mappedBy = "booking", cascade = CascadeType.ALL)
+	private Feedback feedback;
 
 	public Booking(Long bookingId, Customer customer, Car car, LocalDateTime pickupDate, LocalDateTime returnDate,
 			double totalAmount, String status, List<Payment> payments, List<Invoice> invoices, Feedback feedback) {
@@ -140,7 +140,5 @@ public class Booking {
 				+ pickupDate + ", returnDate=" + returnDate + ", totalAmount=" + totalAmount + ", status=" + status
 				+ ", payments=" + payments + ", invoices=" + invoices + ", feedback=" + feedback + "]";
 	}
-    
+
 }
-
-

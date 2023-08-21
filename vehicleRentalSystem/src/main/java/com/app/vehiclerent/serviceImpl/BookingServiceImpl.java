@@ -1,6 +1,9 @@
 package com.app.vehiclerent.serviceImpl;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,4 +46,26 @@ public class BookingServiceImpl implements BookingService {
     public void deleteBooking(Long id) {
         bookingRepository.deleteById(id);
     }
+    
+    // Calculate the rental days for a booking
+    @Override
+    public int calculateRentalDays(Booking booking) {
+        LocalDateTime pickupDate = booking.getPickupDate();
+        LocalDateTime returnDate = booking.getReturnDate();
+
+        long diffInSeconds = returnDate.atZone(ZoneId.systemDefault()).toEpochSecond() - pickupDate.atZone(ZoneId.systemDefault()).toEpochSecond();
+        return (int) TimeUnit.SECONDS.toDays(diffInSeconds);
+    }
+    
+    @Override
+    public double calculateTotalAmount(Booking booking) {
+        int rentalDays = calculateRentalDays(booking); 
+        double dailyRate = booking.getCar().getDailyRentalRate(); 
+        double totalAmount = rentalDays * dailyRate;
+        
+        booking.setTotalAmount(totalAmount);
+
+        return totalAmount;
+    }
+    
 }
