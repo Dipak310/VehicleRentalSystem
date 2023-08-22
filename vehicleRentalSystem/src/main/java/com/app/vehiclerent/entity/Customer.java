@@ -15,6 +15,7 @@ public class Customer {
     private String firstName;
     private String lastName;
     private String email;
+    private String role;
     private String phoneNumber;
     private LocalDate dateOfBirth;
     private String licenseNumber;
@@ -87,6 +88,14 @@ public class Customer {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	public String getPhoneNumber() {

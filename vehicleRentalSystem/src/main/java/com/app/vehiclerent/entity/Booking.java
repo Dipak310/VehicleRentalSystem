@@ -19,6 +19,9 @@ public class Booking {
 	@ManyToOne
 	@JoinColumn(name = "car_id")
 	private Car car;
+	
+	@OneToMany(mappedBy = "booking", cascade = CascadeType.ALL)
+    private List<Cancellation> cancellations;
 
 	private LocalDateTime pickupDate;
 	private LocalDateTime returnDate;

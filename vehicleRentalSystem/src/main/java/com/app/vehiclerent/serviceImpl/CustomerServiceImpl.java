@@ -43,4 +43,22 @@ public class CustomerServiceImpl implements CustomerService {
     public void deleteCustomer(Long id) {
         customerRepository.deleteById(id);
     }
+    
+    @Override
+	public Customer authenticate(String email, String password) {
+    	Customer customer = findByEmail(email);
+		if(customer != null && customer.getPassword().equals(password))
+		   return customer;
+		return null;
+	}
+
+	@Override
+	public Customer findByEmail(String email) {
+		return customerRepository.findByEmail(email);
+	}
+
+	@Override
+	public List<Customer> findByRole(String role) {
+		return customerRepository.findByRole(role);
+	}
 }
