@@ -45,4 +45,18 @@ public class BookingController {
     public void deleteBooking(@PathVariable Long id) {
         bookingService.deleteBooking(id);
     }
+    
+    @GetMapping("/rentalDays/{id}")
+    public int calculateRentalDays(@PathVariable Long id) {
+    	Booking b = bookingService.getBookingById(id);
+    	int rentDays = bookingService.calculateRentalDays(b);
+    	return rentDays;
+    }
+    
+    @GetMapping("/totalAmount/{id}")
+    public double calculateTotalAmount(@PathVariable Long id) {
+    	Booking b = bookingService.getBookingById(id);
+    	double totalAmt = bookingService.calculateTotalAmount(b);
+    	return totalAmt;
+    }
 }
