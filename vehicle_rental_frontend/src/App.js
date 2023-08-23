@@ -14,6 +14,8 @@ import FeedbackForm from './components/FeedbackForm';
 import Otherelement from './components/OtherComponent';
 import Login from './components/Login';
 import Logout from './components/Logout'
+import RegisterForm from './components/RegisterForm';
+import ForgotPassword from './components/ForgetPassword';
 
 import Home from './components/Home';
 import ContactUs from './components/ContactUs';
@@ -43,6 +45,8 @@ function App() {
       <Route path="/other" element={<Otherelement />} />
       <Route path="/login" element={<Login />} />
       <Route path="/logout" element={<Logout />} />
+      <Route path="/register" element={<RegisterForm />} />
+      <Route path="/forget-password" element={<ForgotPassword />} />
 
       <Route path="/" element={<Home />} />
   <Route path="/contact" exact render={() => <PrivateRoute path="/contact" component={ContactUs} />} />

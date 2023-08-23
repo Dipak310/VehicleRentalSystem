@@ -1,0 +1,75 @@
+/* CarList.css */
+
+/* Container style */
+.container {
+    background-color: #f7f7f7; /* Light gray background */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Title style */
+  .text-center {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333; /* Dark gray text color */
+  }
+  
+  /* Card animation on hover */
+  .car-card {
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .car-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Card image style */
+  .car-image {
+    max-height: 200px; /* Limit the image height */
+    object-fit: cover; /* Maintain image aspect ratio and cover the container */
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  
+  /* Card body style */
+  .card-body {
+    padding: 15px;
+  }
+  
+  /* Card title style */
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333; /* Dark gray text color */
+  }
+  
+  /* Card text style */
+  .card-text {
+    color: #555; /* Dark gray text color */
+  }
+  
+  /* Button style */
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    margin-top: 10px;
+    color: #fff; /* White text color */
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+  
+  /* List item style */
+  .card-body ul li {
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Add more custom styles as needed */
+  

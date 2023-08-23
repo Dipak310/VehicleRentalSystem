@@ -1,10 +1,16 @@
 package com.app.vehiclerent.entity;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
 @Table
@@ -25,6 +31,9 @@ public class Car {
 
 	@OneToMany(mappedBy = "car", cascade = CascadeType.ALL)
 	private List<Booking> bookings;
+	
+	@OneToMany(mappedBy = "car", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CarImage> carImages = new ArrayList<>();
 
 	public Car() {
 		super();

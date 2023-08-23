@@ -1,0 +1,142 @@
+import React, { useState } from 'react';
+import axios from 'axios';
+import '../css/RegisterForm.css';
+
+function RegisterForm() {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    role: '', // Add role field
+    phoneNumber: '',
+    dateOfBirth: '',
+    licenseNumber: '',
+    username: '',
+    password: '',
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    axios
+      .post('http://localhost:8080/customers', formData) // Updated API endpoint
+      .then((response) => {
+        console.log('Customer registered successfully!', response.data);
+        // You can redirect the user to a success page or perform other actions here
+      })
+      .catch((error) => {
+        console.error('Error registering customer:', error);
+      });
+  };
+
+  return (
+    <div>
+      <h2>Register New Customer</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>First Name</label>
+          <input
+            type="text"
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div>
+          <label>Last Name</label>
+          <input
+            type="text"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div>
+          <label>Email</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div>
+          <label>Role</label>
+          <input
+            type="text"
+            name="role"
+            value={formData.role}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div>
+          <label>Phone Number</label>
+          <input
+            type="tel"
+            name="phoneNumber"
+            value={formData.phoneNumber}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div>
+          <label>Date of Birth</label>
+          <input
+            type="date"
+            name="dateOfBirth"
+            value={formData.dateOfBirth}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div>
+          <label>License Number</label>
+          <input
+            type="text"
+            name="licenseNumber"
+            value={formData.licenseNumber}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div>
+          <label>Username</label>
+          <input
+            type="text"
+            name="username"
+            value={formData.username}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div>
+          <label>Password</label>
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div>
+          <button type="submit">Register</button>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+export default RegisterForm;
