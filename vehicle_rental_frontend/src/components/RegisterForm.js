@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../css/RegisterForm.css';
 
 function RegisterForm() {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     email: '',
-    role: '', // Add role field
+    role: 'Customer',
     phoneNumber: '',
     dateOfBirth: '',
     licenseNumber: '',
     username: '',
     password: '',
+    loggedIn: false,
   });
 
   const handleInputChange = (e) => {
@@ -73,13 +73,28 @@ function RegisterForm() {
         </div>
         <div>
           <label>Role</label>
-          <input
-            type="text"
-            name="role"
-            value={formData.role}
-            onChange={handleInputChange}
-            required
-          />
+          <div>
+            <input
+              type="radio"
+              id="adminRole"
+              name="role"
+              value="Admin"
+              checked={formData.role === 'Admin'}
+              onChange={handleInputChange}
+            />
+            <label htmlFor="adminRole">Admin</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              id="customerRole"
+              name="role"
+              value="Customer"
+              checked={formData.role === 'Customer'}
+              onChange={handleInputChange}
+            />
+            <label htmlFor="customerRole">Customer</label>
+          </div>
         </div>
         <div>
           <label>Phone Number</label>

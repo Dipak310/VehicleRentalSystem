@@ -111,7 +111,7 @@ public class CarServiceImpl implements CarService {
         String imageUrl = carImage.getImageUrl();
 
         // Construct the full file path
-        String imagePath = "src/main/resources/static" + imageUrl;
+        String imagePath = "C:/Users/DIPAK/Downloads/vehicleRentalSystem/vehicleRentalSystem/src/main/resources/static" + imageUrl;
 
         try {
             if (Files.exists(Paths.get(imagePath))) {

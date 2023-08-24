@@ -16,6 +16,10 @@ import Login from './components/Login';
 import Logout from './components/Logout'
 import RegisterForm from './components/RegisterForm';
 import ForgotPassword from './components/ForgetPassword';
+import SignUpForm from './components/SignUpForm';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 import Home from './components/Home';
 import ContactUs from './components/ContactUs';
@@ -24,6 +28,7 @@ import Navbar from './components/Navbar';
 import PrivateRoute from './components/PrivateRoute';
 import ManageVehicles from './components/ManageVehicles'; // Import the ManageVehicles component
 import ManageCars from './components/ManageCars';
+import LoginHomePage from './components/LoginHomePage'
 //import { AuthProvider } from 'react-auth0';
 
 function App() {
@@ -45,6 +50,8 @@ function App() {
       <Route path="/other" element={<Otherelement />} />
       <Route path="/login" element={<Login />} />
       <Route path="/logout" element={<Logout />} />
+      <Route path="/signup" element={<SignUpForm />} />
+      <Route path="/loginhomepage" element={<LoginHomePage />} />
       <Route path="/register" element={<RegisterForm />} />
       <Route path="/forget-password" element={<ForgotPassword />} />
 

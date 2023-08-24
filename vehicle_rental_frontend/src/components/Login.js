@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { json, useNavigate } from 'react-router-dom'; 
 import axios from 'axios';
-import '../css/Login.css';
 
 function Login() {
+  const navigate = useNavigate(); 
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
@@ -19,13 +21,15 @@ function Login() {
 
       const user = response.data;
 
+      localStorage.setItem('user',JSON.stringify(user));
+
       if (user) {
         // Display success message
         setSuccessMessage('Login successful. Welcome!');
         setErrorMessage('');
 
-        // Redirect or perform actions on successful login
-        console.log('Logged in as:', user);
+        // Redirect to the Home route
+        navigate('/'); // Redirect to the Home route
       } else {
         // Display error message
         setErrorMessage('Invalid Details');
@@ -45,13 +49,13 @@ function Login() {
         <div className="col-md-6">
           <div className="login-form">
             <h2 className="text-center">Login</h2>
-            
+
             {/* Display success message */}
             {successMessage && <div className="alert alert-success">{successMessage}</div>}
-            
+
             {/* Display error message */}
             {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
-            
+
             <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <input

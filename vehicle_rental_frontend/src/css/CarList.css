@@ -1,75 +1,36 @@
-/* CarList.css */
-
-/* Container style */
-.container {
-    background-color: #f7f7f7; /* Light gray background */
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Title style */
-  .text-center {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #333; /* Dark gray text color */
-  }
-  
-  /* Card animation on hover */
-  .car-card {
-    transition: transform 0.3s ease-in-out;
-    cursor: pointer;
+/* carlist.css */
+.car-card {
+    border: none;
+    transition: transform 0.3s;
   }
   
   .car-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
   }
   
-  /* Card image style */
   .car-image {
-    max-height: 200px; /* Limit the image height */
-    object-fit: cover; /* Maintain image aspect ratio and cover the container */
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    height: 200px;
+    object-fit: cover;
   }
   
-  /* Card body style */
-  .card-body {
-    padding: 15px;
+  .car-details {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
   }
   
-  /* Card title style */
-  .card-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #333; /* Dark gray text color */
+  .car-details li {
+    margin-bottom: 5px;
   }
   
-  /* Card text style */
-  .card-text {
-    color: #555; /* Dark gray text color */
-  }
-  
-  /* Button style */
-  .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+  .btn-details {
     margin-top: 10px;
-    color: #fff; /* White text color */
   }
   
-  .btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
+  @media (min-width: 768px) {
+    .row-cols-md-3 .col {
+      flex: 0 0 33.3333%;
+      max-width: 33.3333%;
+    }
   }
-  
-  /* List item style */
-  .card-body ul li {
-    margin-bottom: 0.5rem;
-  }
-  
-  /* Add more custom styles as needed */
   

@@ -25,7 +25,7 @@ public class LoginController {
     public ResponseEntity<?> authenticateUser(@RequestBody Customer customer, HttpSession session) {
         if (customer.getEmail() == null || customer.getPassword() == null) {
             return ResponseEntity.badRequest().body("Email and password are required");
-        }
+        }  
 
         Customer authcustomer = customerService.findByEmail(customer.getEmail());
 

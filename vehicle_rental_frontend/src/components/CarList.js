@@ -1,7 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import  { useState, useEffect } from 'react';
 import axios from 'axios';
-import sampleCarImage from '../Images/listing_img3.jpg'; // Import your sample car image
-import '../css/CarList.css'; // Import your custom CSS for animations
+import sampleCarImage from '../Images/recent-car-6.jpg'; // Import your sample car image
+import '../css/carlist.css'; // Import your custom CSS for animationsyyyyyyy
+import img1 from '../Images/recent-car-1.jpg';
+import img2 from '../Images/recent-car-2.jpg';
+import img3 from '../Images/recent-car-3.jpg';
+
+// function CarList() {
+//   const cars = [
+//     { id: 1, name: 'Car Model 1', imageUrl: 'car1.jpg' },
+//     { id: 2, name: 'Car Model 2', imageUrl: 'car2.jpg' },
+//     // Add more cars
+//   ];
 
 function CarList() {
   const [cars, setCars] = useState([]);
@@ -18,6 +29,50 @@ function CarList() {
   }, []);
 
   return (
+    <>
+    <div class="container mt-5">
+    <h2 class="text-center">Auto Car Carousel</h2>
+    <div id="carCarousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src={img1} class="d-block w-100" alt="Car 1"/>
+        </div>
+        <div class="carousel-item">
+          <img src={img2} class="d-block w-100" alt="Car 2"/>
+        </div>
+        <div class="carousel-item">
+          <img src={img3} class="d-block w-100" alt="Car 3"/>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+
+    {/* <section class="car-listing">
+    <h2>Featured Cars</h2>
+    <div class="car-grid">
+        <div class="car">
+            <img src={sampleCarImage} alt="Car 1"/>
+            <h3>Car Model 1</h3>
+            <p>Starting at $50/day</p>
+            <a href="#" class="btn">Rent Now</a>
+        </div>
+        <div class="car">
+            <img src={sampleCarImage} alt="Car 2"/>
+            <h3>Car Model 2</h3>
+            <p>Starting at $60/day</p>
+            <a href="#" class="btn">Rent Now</a>
+        </div>
+    </div>
+</section> */}
+
     <div className="container my-5">
       <h2 className="text-center mb-4">Discover Our Cars</h2>
       <div className="row row-cols-1 row-cols-md-3 g-4">
@@ -66,6 +121,8 @@ function CarList() {
         ))}
       </div>
     </div>
+    </>
+    
   );
 }
 
