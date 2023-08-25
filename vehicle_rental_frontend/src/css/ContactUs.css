@@ -1,0 +1,123 @@
+/* ContactUs.css */
+
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+  }
+  
+  .contact-content {
+    flex: 1;
+    padding-right: 30px;
+  }
+  
+  .contact-heading {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  .contact-description {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+  
+  .contact-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .contact-option label {
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .contact-details {
+    font-size: 16px;
+  }
+  
+  .contact-image-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .contact-image {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Style radio buttons */
+  input[type="radio"] {
+    margin-right: 10px;
+  }
+  
+  input[type="radio"]:checked + label {
+    font-weight: bold;
+    color: #007bff;
+  }
+/* ContactUs.css */
+
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+  }
+  
+  .contact-content {
+    flex: 1;
+    padding-right: 30px;
+  }
+  
+  .contact-heading {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  .contact-description {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+  
+  .contact-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .contact-option {
+    display: flex;
+    align-items: center;
+  }
+  
+  .contact-option input[type="radio"] {
+    margin-right: 10px;
+  }
+  
+  .contact-option label {
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .contact-details {
+    font-size: 16px;
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .contact-image-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .contact-image {
+    max-width: 100%;
+    height: auto;
+  }

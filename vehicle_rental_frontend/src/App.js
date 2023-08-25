@@ -28,13 +28,23 @@ import Navbar from './components/Navbar';
 import PrivateRoute from './components/PrivateRoute';
 import ManageVehicles from './components/ManageVehicles'; // Import the ManageVehicles component
 import ManageCars from './components/ManageCars';
-import LoginHomePage from './components/LoginHomePage'
+import LoginHomePage from './components/LoginHomePage';
+import Registeration from './components/Registeration';
+import CarDetails from './components/CarDetails';
 //import { AuthProvider } from 'react-auth0';
+
+import AdminDashboard from './components/admin/AdminDashboard';
+import View_User from './components/admin/View_User';
+import RegisterCar from './components/admin/RegisterCar';
+import Manage_bookings from './components/admin/Manage_bookings';
+import PaymentInfo from './components/admin/PaymentInfo';
+import Footer from './components/Footer';
 
 function App() {
   return (
     <AuthProvider>
     <BrowserRouter>
+    <Navbar />
     <Routes>
     
       <Route path="/cars" element={<CarList />} />
@@ -53,11 +63,21 @@ function App() {
       <Route path="/signup" element={<SignUpForm />} />
       <Route path="/loginhomepage" element={<LoginHomePage />} />
       <Route path="/register" element={<RegisterForm />} />
+      <Route path="/registration" element={<Registeration />} />
       <Route path="/forget-password" element={<ForgotPassword />} />
+      <Route path='/carDetails/:id' element={<CarDetails/>}></Route>
+
+      <Route path="/admind" element={<AdminDashboard />} />
+      <Route path="/view_users" element={<View_User/>}/>
+      <Route path="/register_cars" element={<RegisterCar />} /> {/* Add this route */}
+      <Route path="/manage_book" element={<Manage_bookings />} /> {/* Add this route */}
+      <Route path="/paymentInfo" element={<PaymentInfo/>}/>
 
       <Route path="/" element={<Home />} />
-  <Route path="/contact" exact render={() => <PrivateRoute path="/contact" component={ContactUs} />} />
-  <Route path="/about" exact render={() => <PrivateRoute path="/about" component={AboutUs} />} />
+  {/* <Route path="/contact" exact render={() => <PrivateRoute path="/contact" component={ContactUs} />} /> */}
+  <Route path="/contact" element={<ContactUs />}/>
+  {/* <Route path="/about" exact render={() => <PrivateRoute path="/about" component={AboutUs} />} /> */}
+  <Route path="/about" element={<AboutUs />}/>
 
   <Route path="/manage-vehicles" element={<ManageVehicles />} /> {/* Add this route */}
   <Route path="/manage-cars" element={<ManageCars />} /> {/* Add this route */}
@@ -66,6 +86,7 @@ function App() {
       {/* Add other routes */}
       
       </Routes>
+      <Footer />
     </BrowserRouter>
     </AuthProvider>
   );

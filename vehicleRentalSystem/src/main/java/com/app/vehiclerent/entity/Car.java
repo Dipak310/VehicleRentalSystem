@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,6 +32,7 @@ public class Car {
 	private LocalDate lastMaintenanceDate;
 
 	@OneToMany(mappedBy = "car", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Booking> bookings;
 	
 	@OneToMany(mappedBy = "car", cascade = CascadeType.ALL, orphanRemoval = true)

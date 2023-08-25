@@ -1,28 +1,48 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import '../css/navbarStyles.css'; // Import your CSS file for styling
+import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap';
+import '../css/navbarStyles.css'; // Import your CSS file for additional styling
 import logo from '../Images/logo.png';
+import AuthContext from './AuthContext';
+import Logout from './Logout';
 
-const Navbar = () => {
-  const isLoggedIn = false; // Replace with your authentication logic
+const CustomNavbar = () => {
+  // Retrieve user data from localStorage
+  const user = JSON.parse(localStorage.getItem('user'));
 
   return (
-    <header class="header">
-    <div class="logo">
-        <a href="/"><img src={logo} alt="Revv Logo"/></a>
-    </div>
-    <nav class="nav">
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="cars">Cars</a></li>
-            <li><a href="#">Offers</a></li>
-            <li><a href="contact">Contact</a></li>
-            <li><a href="login">Login</a></li>
-            <li><a href="register">Register</a></li>
-        </ul>
-    </nav>
-</header>
+    <Navbar bg="dark" variant="dark" expand="lg">
+      <Container>
+        <Navbar.Brand>
+          <Link to="/">
+            <img src={logo} alt="Revv Logo" />
+          </Link>
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
+            <Nav.Link as={Link} to="/">Home</Nav.Link>
+            <Nav.Link as={Link} to="/cars">Cars</Nav.Link>
+            <Nav.Link as={Link} to="#">Offers</Nav.Link>
+            <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
+            <Nav.Link as={Link} to="/about">About Us</Nav.Link>
+          </Nav>
+          <Nav>
+            {user.logged_in ? (
+              <NavDropdown title="Account" id="basic-nav-dropdown">
+                <NavDropdown.Item onClick={Logout}>Logout</NavDropdown.Item>
+              </NavDropdown>
+            ) : (
+              <>
+                <Nav.Link as={Link} to="/signup">Login</Nav.Link>
+                <Nav.Link as={Link} to="/registration">Register</Nav.Link>
+              </>
+            )}
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 
-export default Navbar;
+export default CustomNavbar;

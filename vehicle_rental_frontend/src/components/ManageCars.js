@@ -6,14 +6,28 @@ function CarList() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:8081/cars') // Update the API endpoint
+    fetchCars();
+  }, []);
+
+  const fetchCars = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/cars');
+      setCars(response.data);
+    } catch (error) {
+      console.error('Error fetching customers:', error);
+    }
+  };
+
+  const handleRemoveCar = carId => {
+    axios.delete(`http://localhost:8080/cars/${carId}`)
       .then(response => {
-        setCars(response.data);
+        console.log('Customer removed:', response.data);
+        fetchCars();
       })
       .catch(error => {
-        setError('Error fetching car data');
+        console.error('Error removing customer:', error);
       });
-  }, []);
+  };
 
   return (
     <div>
@@ -33,6 +47,7 @@ function CarList() {
             <th>Daily Rental Rate</th>
             <th>Available</th>
             <th>Last Maintenance Date</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -48,6 +63,14 @@ function CarList() {
               <td>{car.dailyRentalRate}</td>
               <td>{car.available ? 'Yes' : 'No'}</td>
               <td>{car.lastMaintenanceDate}</td>
+              <td>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => handleRemoveCar(car.carId)}
+                >
+                  Delete
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>

@@ -20,12 +20,12 @@ function SignUpForm() {
       });
 
       const user = response.data;
-
       localStorage.setItem('user', JSON.stringify(user));
 
       if (user) {
         // Display success message
-        setSuccessMessage('Login successful. Welcome!');
+        window.alert('Login successful. Welcome!');
+        console.log(user);
         setErrorMessage('');
 
         // Redirect to the Home route
@@ -152,7 +152,7 @@ function SignUpForm() {
                 {/* Add the Signup and Forgot Password links */}
                 <p className="text-center">
                   Don't have an account?{' '}
-                  <a href="register" data-toggle="modal" data-dismiss="modal">
+                  <a href="registration" data-toggle="modal" data-dismiss="modal">
                     Signup Here
                   </a>
                 </p>

@@ -1,0 +1,67 @@
+/* carDetails.module.css */
+
+.container {
+    margin: 0 auto;
+    padding: 40px;
+  }
+  
+  .car-details-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .car-details {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .card-header {
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 0;
+    text-align: center;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .card-header h4 {
+    margin: 0;
+    font-size: 20px;
+  }
+  
+  .list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .list-group-item:last-child {
+    border-bottom: none;
+  }
+  
+  .banner {
+    flex: 1;
+    margin-left: 20px;
+  }
+  
+  /* Responsive layout for smaller screens */
+  @media (max-width: 768px) {
+    .car-details-container {
+      flex-direction: column;
+    }
+  
+    .banner {
+      margin-top: 20px;
+    }
+  }
+  

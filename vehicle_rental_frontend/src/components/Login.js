@@ -1,110 +1,52 @@
-import React, { useState } from 'react';
-import { json, useNavigate } from 'react-router-dom'; 
-import axios from 'axios';
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import '../css/navbarStyles.css'; // Import your CSS file for styling
+import logo from '../Images/logo.png';
 
-function Login() {
-  const navigate = useNavigate(); 
+const Navbar = ({ isLoggedIn, username }) => {
+  const navigate = useNavigate();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const handleLogout = () => {
+    // Clear user data from local storage or perform any logout actions
+    localStorage.removeItem('user');
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await axios.post('http://localhost:8080/users/authenticateUser', {
-        email,
-        password,
-      });
-
-      const user = response.data;
-
-      localStorage.setItem('user',JSON.stringify(user));
-
-      if (user) {
-        // Display success message
-        setSuccessMessage('Login successful. Welcome!');
-        setErrorMessage('');
-
-        // Redirect to the Home route
-        navigate('/'); // Redirect to the Home route
-      } else {
-        // Display error message
-        setErrorMessage('Invalid Details');
-        setSuccessMessage('');
-      }
-    } catch (error) {
-      // Display error message
-      setErrorMessage('Invalid Details');
-      setSuccessMessage('');
-      console.error('Login failed:', error.message);
-    }
+    // Redirect to the Home route or any other desired route after logout
+    navigate('/');
   };
 
   return (
-    <div className="container">
-      <div className="row justify-content-center">
-        <div className="col-md-6">
-          <div className="login-form">
-            <h2 className="text-center">Login</h2>
-
-            {/* Display success message */}
-            {successMessage && <div className="alert alert-success">{successMessage}</div>}
-
-            {/* Display error message */}
-            {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
-
-            <form onSubmit={handleSubmit}>
-              <div className="form-group">
-                <input
-                  type="email"
-                  className="form-control"
-                  name="email"
-                  placeholder="Email address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <input
-                  type="password"
-                  className="form-control"
-                  name="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <button type="submit" className="btn btn-primary btn-block">
-                  Login
-                </button>
-              </div>
-            </form>
-            <p className="text-center">
-              Don't have an account?{' '}
-              <a href="register" data-toggle="modal" data-dismiss="modal">
-                Signup Here
-              </a>
-            </p>
-            <p className="text-center">
-              <a
-                href="forget-password"
-                data-toggle="modal"
-                data-dismiss="modal"
-              >
-                Forgot Password?
-              </a>
-            </p>
-          </div>
-        </div>
+    <header className="header">
+      <div className="logo">
+        <Link to="/">
+          <img src={logo} alt="Revv Logo" />
+        </Link>
       </div>
-    </div>
+      <nav className="nav">
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/cars">Cars</Link></li>
+          <li><Link to="/offers">Offers</Link></li>
+          <li><Link to="/contact">Contact</Link></li>
+          {isLoggedIn ? (
+            <>
+              <li><Link to="/profile">Profile</Link></li>
+              <li>
+                {username && <span className="username">{username}</span>}
+                <button onClick={handleLogout} className="logout-button">
+                  Logout
+                </button>
+              </li>
+            </>
+          ) : (
+            <>
+              <li><Link to="/login">Login</Link></li>
+              <li><Link to="/register">Register</Link></li>
+            </>
+          )}
+        </ul>
+      </nav>
+    </header>
   );
-}
+};
 
-export default Login;
+export default Navbar;
