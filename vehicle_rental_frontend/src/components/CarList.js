@@ -66,7 +66,7 @@ function CarList() {
     <>
       <div className="container mt-5">
         <h2 className="text-center">Auto Car Carousel</h2>
-        <Carousel id="carCarousel" interval={2000}> {/* Autoplay interval set to 3 seconds (3000 milliseconds) */}
+        <Carousel id="carCarousel" interval={1000}> {/* Autoplay interval set to 3 seconds (3000 milliseconds) */}
           {sampleCarImages.map((image, index) => (
             <Carousel.Item key={index}>
               <img src={image} className="d-block w-100" alt={`Car ${index + 1}`} />

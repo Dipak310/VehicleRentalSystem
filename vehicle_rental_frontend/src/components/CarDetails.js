@@ -68,7 +68,6 @@ function CarDetails() {
         </div>
       </Container>
       <Banner />
-      <Footer />
     </>
   );
 }

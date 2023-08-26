@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 function RegisterForm() {
     const [formData, setFormData] = useState({
@@ -14,6 +15,7 @@ function RegisterForm() {
         username: '',
     });
 
+    const navigate = useNavigate();
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
@@ -27,11 +29,12 @@ function RegisterForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        navigate('/signup');
 
         axios
             .post('http://localhost:8080/customers', formData) // Updated API endpoint
             .then((response) => {
-                console.log('Customer registered successfully!', response.data);
+                window.alert('Customer registered successfully!', response.data);
                 setSuccessMessage('Registration successful!'); // Set success message
                 setErrorMessage(''); // Clear any previous error messages
                 // You can redirect the user to a success page or perform other actions here
@@ -112,8 +115,8 @@ function RegisterForm() {
                                                     type="radio"
                                                     id="customerRole"
                                                     name="role"
-                                                    value="Customer"
-                                                    checked={formData.role === 'Customer'}
+                                                    value="customer"
+                                                    checked={formData.role === 'customer'}
                                                     onChange={handleInputChange}
                                                 />
                                                 <label className="form-check-label" htmlFor="customerRole">Customer</label>

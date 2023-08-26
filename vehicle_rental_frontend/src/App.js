@@ -25,6 +25,7 @@ import Home from './components/Home';
 import ContactUs from './components/ContactUs';
 import AboutUs from './components/AboutUs';
 import Navbar from './components/Navbar';
+import NavbarLogin from './components/NavbarLogin';
 import PrivateRoute from './components/PrivateRoute';
 import ManageVehicles from './components/ManageVehicles'; // Import the ManageVehicles component
 import ManageCars from './components/ManageCars';
@@ -44,7 +45,7 @@ function App() {
   return (
     <AuthProvider>
     <BrowserRouter>
-    <Navbar />
+    {/* <Navbar /> */}
     <Routes>
     
       <Route path="/cars" element={<CarList />} />

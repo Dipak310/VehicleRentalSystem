@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import '../css/ContactUs.css'; // Import your custom CSS
+import { Navbar } from 'react-bootstrap';
+// import NavbarLogin from './NavbarLogin'
 
 function ContactUs() {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -23,6 +25,7 @@ function ContactUs() {
 
   return (
     <div className="contact-container">
+      {/* <NavbarLogin /> */}
       <div className="contact-content">
         <h2 className="contact-heading">Contact Us</h2>
         <p className="contact-description">

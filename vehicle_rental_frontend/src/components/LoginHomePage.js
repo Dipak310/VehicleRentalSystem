@@ -2,25 +2,24 @@ import React from 'react';
 import Footer from './Footer';
 import CarList from './CarList';
 import Testimonials from './Testimonials';
-import Navbar from './Navbar';
-import HomeOne from './Home';
+import NavbarLogin from './NavbarLogin';
 
 // Import other components as needed
 
-function LoginHomePage() {
+function HomeOne() {
   return (
     <div>
       {/* <Header /> */}
-      <Navbar title="logout" name="logout" />
+      <NavbarLogin />
 
       {/* <Banner /> */}
       <CarList />
       <Testimonials />
 
       {/* Other sections/components */}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
 
-export default LoginHomePage;
+export default HomeOne;

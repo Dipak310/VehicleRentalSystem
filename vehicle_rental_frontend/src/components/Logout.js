@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import NavbarLogin from '../components/NavbarLogin';
 
 function Logout() {
     const navigate = useNavigate();
@@ -11,7 +12,7 @@ function Logout() {
       // Call the logout function from the AuthContext
       logout();
       // After logging out, redirect to the login page
-      navigate('/login');
+      navigate('/');
     };
 
     return (

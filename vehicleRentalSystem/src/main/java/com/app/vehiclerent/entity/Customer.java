@@ -3,6 +3,8 @@ package com.app.vehiclerent.entity;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -24,6 +26,7 @@ public class Customer {
     private boolean loggedIn;
     
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Booking> bookings;
     
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
@@ -33,8 +36,7 @@ public class Customer {
     private List<Feedback> feedbacks;
 
 	public Customer() {
-		super();
-		// TODO Auto-generated constructor stub
+//		super();
 	}
 
 	public Customer(Long customerId, String firstName, String lastName, String email, String phoneNumber,

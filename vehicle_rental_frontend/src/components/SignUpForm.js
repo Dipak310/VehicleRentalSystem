@@ -29,7 +29,7 @@ function SignUpForm() {
         setErrorMessage('');
 
         // Redirect to the Home route
-        navigate('/'); // Redirect to the Home route
+        navigate('/loginhomepage'); // Redirect to the Home route
       } else {
         // Display error message
         setErrorMessage('Invalid Details');
@@ -74,7 +74,7 @@ function SignUpForm() {
               }}
             >
               <div className="card-body p-5 shadow-5 text-center">
-                <h2 className="fw-bold mb-5">Sign up now</h2>
+                <h2 className="fw-bold mb-5">Login now</h2>
                 <form onSubmit={handleSubmit}>
                   <div className="form-outline mb-4">
                     <input
@@ -116,7 +116,7 @@ function SignUpForm() {
                   </div>
 
                   <button type="submit" className="btn btn-primary btn-block mb-4">
-                    Sign up
+                    Login
                   </button>
 
                   {/* Display success message */}

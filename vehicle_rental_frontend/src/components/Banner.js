@@ -37,7 +37,7 @@ function Banner() {
 
     axios.post('http://localhost:8080/bookings', formattedFormData)
       .then(response => {
-        console.log('Booking successful:', response.data);
+        window.alert('Booking successful:', response.data);
       })
       .catch(error => {
         console.error('Error booking car:', error);
