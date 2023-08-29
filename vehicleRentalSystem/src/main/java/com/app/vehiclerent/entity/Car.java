@@ -30,6 +30,7 @@ public class Car {
 	private double dailyRentalRate;
 	private boolean available;
 	private LocalDate lastMaintenanceDate;
+	private String carImageLink;
 
 	@OneToMany(mappedBy = "car", cascade = CascadeType.ALL)
 	@JsonIgnore
@@ -45,7 +46,7 @@ public class Car {
 
 	public Car(Long carId, String make, String model, int year, String color, String licensePlate, double mileage,
 			String fuelType, String transmissionType, int seatingCapacity, double dailyRentalRate, boolean available,
-			LocalDate lastMaintenanceDate, List<Booking> bookings) {
+			LocalDate lastMaintenanceDate, List<Booking> bookings, String carImageLink) {
 		super();
 		this.carId = carId;
 		this.model = model;
@@ -58,6 +59,7 @@ public class Car {
 		this.available = available;
 		this.lastMaintenanceDate = lastMaintenanceDate;
 		this.bookings = bookings;
+		this.carImageLink = carImageLink;
 	}
 
 	public Long getCarId() {
@@ -139,6 +141,22 @@ public class Car {
 	public void setLastMaintenanceDate(LocalDate lastMaintenanceDate) {
 		this.lastMaintenanceDate = lastMaintenanceDate;
 	}
+	
+	public String getCarImageLink() {
+		return carImageLink;
+	}
+
+	public void setCarImageLink(String carImageLink) {
+		this.carImageLink = carImageLink;
+	}
+
+	public List<CarImage> getCarImages() {
+		return carImages;
+	}
+
+	public void setCarImages(List<CarImage> carImages) {
+		this.carImages = carImages;
+	}
 
 	public List<Booking> getBookings() {
 		return bookings;
@@ -153,7 +171,8 @@ public class Car {
 		return "Car [carId=" + carId + ", model=" + model + ", licensePlate=" + licensePlate + ", mileage=" + mileage
 				+ ", fuelType=" + fuelType + ", transmissionType=" + transmissionType + ", seatingCapacity="
 				+ seatingCapacity + ", dailyRentalRate=" + dailyRentalRate + ", available=" + available
-				+ ", lastMaintenanceDate=" + lastMaintenanceDate + ", bookings=" + bookings + "]";
+				+ ", lastMaintenanceDate=" + lastMaintenanceDate + ", carImageLink=" + carImageLink + ", bookings="
+				+ bookings + ", carImages=" + carImages + "]";
 	}
 
 }

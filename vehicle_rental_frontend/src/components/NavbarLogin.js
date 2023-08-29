@@ -1,10 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap';
-import '../css/navbarStyles.css'; // Import your CSS file for additional styling
+import { Navbar, Nav, Container, Image } from 'react-bootstrap';
+import { PersonCircle } from 'react-bootstrap-icons'; // Import an icon of your choice
 import logo from '../Images/logo.png';
-import AuthContext from './AuthContext';
-import Logout from './Logout';
+import handleLogout from '../components/Logout';
 
 const CustomNavbar = () => {
   // Retrieve user data from localStorage
@@ -15,7 +14,7 @@ const CustomNavbar = () => {
       <Container>
         <Navbar.Brand>
           <Link to="/">
-            <img src={logo} alt="Revv Logo" />
+            <Image src={logo} alt="Revv Logo" fluid />
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -28,18 +27,11 @@ const CustomNavbar = () => {
             <Nav.Link as={Link} to="/about">About Us</Nav.Link>
             <Nav.Link as={Link} to="/logout">Logout</Nav.Link>
           </Nav>
-          {/* <Nav>
-            {user.logged_in ? (
-              <NavDropdown title="Account" id="basic-nav-dropdown">
-                <NavDropdown.Item onClick={Logout}>Logout</NavDropdown.Item>
-              </NavDropdown>
-            ) : (
-              <>
-                <Nav.Link as={Link} to="/signup">Login</Nav.Link>
-                <Nav.Link as={Link} to="/registration">Register</Nav.Link>
-              </>
-            )}
-          </Nav> */}
+          {/* Display the username with an icon */}
+          <Nav.Item className="d-flex align-items-center">
+            <PersonCircle size={24} className="mr-2" />
+            <span className="text-light">Welcome, {user.username}</span>
+          </Nav.Item>
         </Navbar.Collapse>
       </Container>
     </Navbar>
