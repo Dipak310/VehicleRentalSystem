@@ -3,9 +3,12 @@ package com.app.vehiclerent.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -44,6 +47,11 @@ public class BookingController {
         return bookingService.updateBooking(id, booking);
     }
     
+    @GetMapping("/customer/{customerId}")
+    public List<Booking> getBookingsByCustomerId(@PathVariable Long customerId) {
+        return bookingService.getBookingsByCustomerId(customerId);
+    }
+    
     @DeleteMapping("/{id}")
     public void deleteBooking(@PathVariable Long id) {
         bookingService.deleteBooking(id);
@@ -61,5 +69,19 @@ public class BookingController {
     	Booking b = bookingService.getBookingById(id);
     	double totalAmt = bookingService.calculateTotalAmount(b);
     	return totalAmt;
+    }
+    
+    @PatchMapping("/{id}/updateTotalAmount")
+    public ResponseEntity<String> updateTotalAmount(@PathVariable Long id) {
+        Booking booking = bookingService.getBookingById(id);
+        if (booking == null) {
+            return new ResponseEntity<>("Booking not found", HttpStatus.NOT_FOUND);
+        }
+        
+        double totalAmount = bookingService.calculateTotalAmount(booking);
+        booking.setTotalAmount(totalAmount);
+        bookingService.updateBooking(id, booking);
+        
+        return new ResponseEntity<>("Total amount updated successfully", HttpStatus.OK);
     }
 }

@@ -23,20 +23,20 @@ function SignUpForm() {
       localStorage.setItem('user', JSON.stringify(user));
 
       if (user) {
-        // Display success message
-        window.alert('Login successful. Welcome!');
+        console.log('Login successful. Welcome!');
         console.log(user);
         setErrorMessage('');
-
-        // Redirect to the Home route
-        navigate('/loginhomepage'); // Redirect to the Home route
+        if(user.role == "admin"){
+          navigate('/admind');
+        }
+        else{
+          navigate('/loginhomepage'); 
+        }
       } else {
-        // Display error message
         setErrorMessage('Invalid Details');
         setSuccessMessage('');
       }
     } catch (error) {
-      // Display error message
       setErrorMessage('Invalid Details');
       setSuccessMessage('');
       console.error('Login failed:', error.message);
@@ -119,12 +119,12 @@ function SignUpForm() {
                     Login
                   </button>
 
-                  {/* Display success message */}
+                 
                   {successMessage && (
                     <div className="alert alert-success">{successMessage}</div>
                   )}
 
-                  {/* Display error message */}
+                  
                   {errorMessage && (
                     <div className="alert alert-danger">{errorMessage}</div>
                   )}
@@ -149,7 +149,7 @@ function SignUpForm() {
                   </div>
                 </form>
 
-                {/* Add the Signup and Forgot Password links */}
+                
                 <p className="text-center">
                   Don't have an account?{' '}
                   <a href="registration" data-toggle="modal" data-dismiss="modal">

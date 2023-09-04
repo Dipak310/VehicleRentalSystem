@@ -12,6 +12,8 @@ import com.app.vehiclerent.entity.Booking;
 import com.app.vehiclerent.repository.BookingRepository;
 import com.app.vehiclerent.service.BookingService;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class BookingServiceImpl implements BookingService {
 
@@ -45,6 +47,11 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public void deleteBooking(Long id) {
         bookingRepository.deleteById(id);
+    }
+    
+    @Override
+    public List<Booking> getBookingsByCustomerId(Long customerId) {
+        return bookingRepository.findByCustomerCustomerId(customerId);
     }
     
     // Calculate the rental days for a booking

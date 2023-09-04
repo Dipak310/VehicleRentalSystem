@@ -1,8 +1,10 @@
 import React from 'react';
+import NavbarLogin from '../NavbarLogin';
 
 function DashboardCard({ title, value, link }) {
   return (
-    <div className="col-md-3">
+    <>
+      <div className="col-md-3">
       <div className="card">
         <div className="card-body bg-primary text-light">
           <div className="card-title text-center">
@@ -17,6 +19,7 @@ function DashboardCard({ title, value, link }) {
         </div>
       </div>
     </div>
+    </>
   );
 }
 
@@ -31,6 +34,7 @@ function AdminDashboard() {
     <div className="ts-main-content">
       {/* Include your leftbar component */}
       {/* Include your header component */}
+      <NavbarLogin />
 
       <div className="content-wrapper">
         <div className="container-fluid">

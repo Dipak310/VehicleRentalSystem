@@ -10,8 +10,10 @@ import {
   Col,
 } from 'reactstrap';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Banner() {
+  const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem('user'));
   const car = JSON.parse(localStorage.getItem('carDetails'));
 
@@ -37,7 +39,9 @@ function Banner() {
 
     axios.post('http://localhost:8080/bookings', formattedFormData)
       .then(response => {
-        window.alert('Booking successful:', response.data);
+        navigate('/payment');
+        // window.alert('Booking successful:', response.data);
+        localStorage.setItem('booking', JSON.stringify(response.data));
       })
       .catch(error => {
         console.error('Error booking car:', error);

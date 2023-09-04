@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import NavbarLogin from '../components/NavbarLogin';
 
 function CarList() {
   const [cars, setCars] = useState([]);
@@ -31,6 +32,7 @@ function CarList() {
 
   return (
     <div>
+      <NavbarLogin />
       <h2>Car List</h2>
       {error && <div className="errorWrap">{error}</div>}
 

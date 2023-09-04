@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container, Row, Col, Card, Image } from 'react-bootstrap';
 
 function Testimonials() {
   const testimonials = [
@@ -8,18 +9,29 @@ function Testimonials() {
   ];
 
   return (
-    <section className="testimonials-section">
-      <div className="container">
-        <h2>What Our Customers Say</h2>
-        <div className="testimonials">
+    <section className="testimonials-section py-5 bg-light">
+      <Container>
+        <h2 className="text-center mb-4">What Our Customers Say</h2>
+        <Row className="justify-content-center">
           {testimonials.map(testimonial => (
-            <div className="testimonial" key={testimonial.id}>
-              <p>"{testimonial.feedback}"</p>
-              <span>- {testimonial.name}</span>
-            </div>
+            <Col key={testimonial.id} md={6} lg={4} className="mb-4">
+              <Card className="testimonial-card shadow">
+                <Card.Body>
+                  <Card.Text>"{testimonial.feedback}"</Card.Text>
+                  <div className="d-flex justify-content-between mt-3">
+                    <Image
+                      src="https://via.placeholder.com/50"
+                      alt={testimonial.name}
+                      roundedCircle
+                    />
+                    <Card.Title>{testimonial.name}</Card.Title>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
           ))}
-        </div>
-      </div>
+        </Row>
+      </Container>
     </section>
   );
 }

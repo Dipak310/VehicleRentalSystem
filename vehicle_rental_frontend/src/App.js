@@ -5,7 +5,6 @@ import CarList from './components/CarList';
 import BookingForm from './components/BookingForm';
 import CustomerDetails from './components/CustomerDetails';
 import AddressForm from './components/AddressForm';
-import AdminDetails from './components/AdminDetails';
 import PaymentForm from './components/PaymentForm';
 import CarFeatureList from './components/CarFeatureList';
 import RentalLocationList from './components/RentalLocationList';
@@ -40,6 +39,8 @@ import RegisterCar from './components/admin/RegisterCar';
 import Manage_bookings from './components/admin/Manage_bookings';
 import PaymentInfo from './components/admin/PaymentInfo';
 import Footer from './components/Footer';
+import BookingList from './components/MyBookings';
+import Payment from './components/PaymentForm';
 
 function App() {
   return (
@@ -52,7 +53,6 @@ function App() {
       <Route path="/bookings" element={<BookingForm  />} />
       <Route path="/customers" element={<CustomerDetails />} />
       <Route path="/addresses" element={<AddressForm />} />
-      <Route path="/admins" element={<AdminDetails />} /> 
       <Route path="/payments" element={<PaymentForm />} />
       <Route path="/car-features" element={<CarFeatureList />} />
       <Route path="/rental-locations" element={<RentalLocationList />} />
@@ -67,6 +67,8 @@ function App() {
       <Route path="/registration" element={<Registeration />} />
       <Route path="/forget-password" element={<ForgotPassword />} />
       <Route path='/carDetails/:id' element={<CarDetails/>}></Route>
+      <Route path='/mybookings' element={<BookingList/>}></Route>
+      <Route path='/payment' element={<PaymentForm/>}></Route>
 
       <Route path="/admind" element={<AdminDashboard />} />
       <Route path="/view_users" element={<View_User/>}/>

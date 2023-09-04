@@ -11,7 +11,7 @@ const CustomNavbar = () => {
   const user = JSON.parse(localStorage.getItem('user'));
 
   return (
-    <Navbar bg="dark" variant="dark" expand="lg">
+    <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
       <Container>
         <Navbar.Brand>
           <Link to="/">
@@ -23,7 +23,6 @@ const CustomNavbar = () => {
           <Nav className="mr-auto">
             <Nav.Link as={Link} to="/">Home</Nav.Link>
             <Nav.Link as={Link} to="/cars">Cars</Nav.Link>
-            <Nav.Link as={Link} to="#">Offers</Nav.Link>
             <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
             <Nav.Link as={Link} to="/about">About Us</Nav.Link>
           </Nav>

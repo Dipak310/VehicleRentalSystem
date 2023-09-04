@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import NavbarLogin from '../NavbarLogin';
 
 function Manage_bookings() {
   const [bookings, setBookings] = useState([]);
@@ -25,11 +26,12 @@ function Manage_bookings() {
     }
   };
 
-	const handleUpdateBooking = (bookingId) => {
+  const handleUpdateBooking = (bookingId) => {
     const updatedData = {};
 
     if (editedData.pickupDate !== undefined) updatedData.pickupDate = editedData.pickupDate;
     if (editedData.returnDate !== undefined) updatedData.returnDate = editedData.returnDate;
+    // Add more fields similarly
 
     if (Object.keys(updatedData).length > 0) {
       axios.put(`http://localhost:8080/bookings/${bookingId}`, updatedData)
@@ -73,9 +75,10 @@ function Manage_bookings() {
       });
   };
 
-
   return (
-    <div>
+    <>
+      <NavbarLogin />
+      <div>
       <h2>Booking List</h2>
       <table className="table">
         <thead>
@@ -191,6 +194,7 @@ function Manage_bookings() {
         </tbody>
       </table>
     </div>
+    </>
   );
 }
 

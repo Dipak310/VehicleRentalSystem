@@ -16,10 +16,13 @@ function Logout() {
     };
 
     return (
-        <div className="container mt-5">
+        <>
+        < NavbarLogin />
+            <div className="container mt-5">
             <h2>Logout</h2>
             <button onClick={handleLogout} className="btn btn-danger">Logout</button>
         </div>
+        </>
     );
 }
 

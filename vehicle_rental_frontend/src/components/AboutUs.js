@@ -1,10 +1,12 @@
 import React from 'react';
 import '../css/AboutUs.css'; // Import your custom CSS
+import NavbarLogin from '../components/NavbarLogin';
 
 function AboutUs() {
   return (
-    <div className="about-container">
-      
+    <>
+      <NavbarLogin />
+      <div className="about-container">
       <div className="about-content">
         <h2 className="about-heading">About Us</h2>
         <p className="about-description">
@@ -35,10 +37,8 @@ function AboutUs() {
           className="about-image"
         />
       </div>
-      
     </div>
-    
-    
+    </>
   );
 }
 

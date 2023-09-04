@@ -23,8 +23,7 @@ function CarList() {
 
   return (
     <>
-      <div className="container mt-5">
-        <h2 className="text-center">Auto Car Carousel</h2>
+      <div className="container mt-3">
         <Carousel id="carCarousel" interval={1000}>
           {sampleCarImages.map((image, index) => (
             <Carousel.Item key={index}>

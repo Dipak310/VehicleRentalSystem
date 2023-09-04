@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import NavbarLogin from '../NavbarLogin';
+
 import {
   MDBBtn,
   MDBContainer,
@@ -87,13 +89,14 @@ function AddCar() {
 
   return (
     <>
+      <NavbarLogin />
       <h1>New Car!!!</h1>
       <MDBContainer className='my-5'>
         <MDBCard>
           <MDBRow className='g-0 d-flex align-items-center'>
             <MDBCol md='4'>
               <MDBCardImage
-                src='https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg'
+                src='https://stimg.cardekho.com/pwa/img/my-account/pic/login-banner.svg'
                 alt='car'
                 className='rounded-t-5 rounded-tr-lg-0'
                 fluid
